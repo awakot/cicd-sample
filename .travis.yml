@@ -1,0 +1,10 @@
+sudo: required
+services:
+    - docker
+
+
+before_install:
+    - docker build -t waytkheming/cicd-sample -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true waytkheming/cicd-sample npm run test -- --coverage
